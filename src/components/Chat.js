@@ -1,5 +1,5 @@
 import firebase from 'firebase';
-import React, { useState,  useRef } from 'react';
+import React, { useState, useRef } from 'react';
 import { db, auth } from '../firebase';
 import { useCollectionData } from 'react-firebase-hooks/firestore';
 import SendMessage from './SendMessage';
@@ -17,11 +17,18 @@ function Chat() {
 
     const { uid, photoURL } = auth.currentUser;
 
+    const hoje = new Date()
+    const dia = hoje.getDate().toString().padStart(2, '0')
+    const mes = String(hoje.getMonth() + 1).padStart(2, '0')
+    const ano = hoje.getFullYear()
+    const dataHoraAtual = `${dia}/${mes}/${ano}  ${hoje.getHours()}:${hoje.getMinutes()}`
+
     await messagesRef.add({
       text: formValue,
       createdAt: firebase.firestore.FieldValue.serverTimestamp(),
       uid,
-      photoURL
+      photoURL,
+      dataHoraAtual,
     })
 
     setFormValue('');
