@@ -1,18 +1,10 @@
+import React from 'react';
 import { auth } from '../firebase';
-import { Button } from '@mui/material';
 
 function SignOut() {
-  return (
-    <div className="signOut">
-      <Button
-        type="submit"
-        className="buttonSignOut"
-        onClick={() => auth.signOut()}
-      >
-        Sign out
-      </Button>
-    </div>
-  );
+  return auth.currentUser && (
+    <button className="sign-out" onClick={() => auth.signOut()}>Sign Out</button>
+  )
 }
 
 export default SignOut;

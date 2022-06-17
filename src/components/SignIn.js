@@ -1,6 +1,7 @@
+import React from 'react';
 import firebase from 'firebase';
 import { auth } from '../firebase';
-import { Button } from '@mui/material';
+import logoGoogle from '../imgs/logoGoogle.png';
 
 function SignIn() {
   const signInWithGoogle = () => {
@@ -9,14 +10,14 @@ function SignIn() {
   };
 
   return (
-    <div className="signIn">
-      <Button
-        type="submit"
-        className="buttonSignIn"
+    <div>
+      <button
+        className="sign-in"
         onClick={signInWithGoogle}
       >
         Sign in with Google
-      </Button>
+        <img src={logoGoogle} alt="Logo" />
+      </button>
     </div>
   );
 }
